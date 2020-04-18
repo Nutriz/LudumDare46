@@ -18,7 +18,7 @@ func _physics_process(delta):
 	vel = move_and_slide(vel, Vector3.UP)
 
 func handle_input():
-	var vy = vel.y
+	var vel_y = vel.y
 
 	var acc = Vector3()
 
@@ -35,7 +35,7 @@ func handle_input():
 		rotate_y(-rotate_speed)
 
 	vel += acc
-	vel.y = vy
+	vel.y = vel_y
 
 	vel.x = clamp(vel.x, -speed, speed)
 	vel.z = clamp(vel.z, -speed, speed)

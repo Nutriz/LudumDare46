@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/restaurant-1-menu.obj-1b45d283c70e1874fb9db25f97dbe46d.mesh"
+
+[deps]
+
+files=[ "res://.import/restaurant-1-menu.obj-1b45d283c70e1874fb9db25f97dbe46d.mesh" ]
+
+source_file="res://Assets/3D/Levels/resto/restaurant-1-menu.obj"
+dest_files=[ "res://.import/restaurant-1-menu.obj-1b45d283c70e1874fb9db25f97dbe46d.mesh", "res://.import/restaurant-1-menu.obj-1b45d283c70e1874fb9db25f97dbe46d.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
