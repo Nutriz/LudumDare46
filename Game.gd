@@ -2,12 +2,16 @@ extends Spatial
 
 onready var customer_scn = load("res://Customer/Customer.tscn")
 
+var move_to_apartment
+
 func _ready():
 	 randomize()
 
 func _process(delta):
+
 	check_for_orders()
 	check_for_dishes()
+	move_camera()
 
 	if Input.is_action_pressed("quit"):
 		get_tree().quit()
@@ -83,3 +87,14 @@ func get_random_menu():
 		return "Green"
 	elif menu_id == 2:
 		return "Blue"
+
+
+func _on_DoorZone_body_exited(body):
+	move_to_apartment = !move_to_apartment
+
+func move_camera():
+	if move_to_apartment:
+		$Camera.translation = $Camera.translation.linear_interpolate($CameraPositionApartment.translation, 0.05)
+	else:
+		$Camera.translation = $Camera.translation.linear_interpolate($CameraPositionRestaurant.translation, 0.05)
+
