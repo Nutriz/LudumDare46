@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/perso.png-4198406319f37cd39f64ff247b9e6656.s3tc.stex"
-path.etc2="res://.import/perso.png-4198406319f37cd39f64ff247b9e6656.etc2.stex"
+path.s3tc="res://.import/restorant.png-ec6caab5a21d434605cd3934f6e22c39.s3tc.stex"
+path.etc2="res://.import/restorant.png-ec6caab5a21d434605cd3934f6e22c39.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/3D/Player/perso.png"
-dest_files=[ "res://.import/perso.png-4198406319f37cd39f64ff247b9e6656.s3tc.stex", "res://.import/perso.png-4198406319f37cd39f64ff247b9e6656.etc2.stex" ]
+source_file="res://Assets/3D/Levels/resto/restorant.png"
+dest_files=[ "res://.import/restorant.png-ec6caab5a21d434605cd3934f6e22c39.s3tc.stex", "res://.import/restorant.png-ec6caab5a21d434605cd3934f6e22c39.etc2.stex" ]
 
 [params]
 

@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/restorant.obj-94e03a9eb69a6a9e1d2c9da41c23cdfc.mesh"
+
+[deps]
+
+files=[ "res://.import/restorant.obj-94e03a9eb69a6a9e1d2c9da41c23cdfc.mesh" ]
+
+source_file="res://Assets/3D/Levels/resto/restorant.obj"
+dest_files=[ "res://.import/restorant.obj-94e03a9eb69a6a9e1d2c9da41c23cdfc.mesh", "res://.import/restorant.obj-94e03a9eb69a6a9e1d2c9da41c23cdfc.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
