@@ -14,7 +14,7 @@ var hungry = 2    # 1 = not hungry, 4 = very hungry
 var target_x
 
 func _ready():
-	pass
+	move_lock_y = true
 
 func _process(delta):
 	pass

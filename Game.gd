@@ -1,6 +1,7 @@
 extends Spatial
 
 onready var customer_scn = load("res://Customer/Customer.tscn")
+onready var plate_scn = load("res://Scenes/Plate.tscn")
 
 var move_to_apartment
 
@@ -19,7 +20,6 @@ func _process(delta):
 	if Input.is_action_just_released("switch_camera"):
 		$Camera.current = !$Camera.current
 
-
 #func add_new_customer():
 #	var customer = customer_scn.instance()
 #	customer.translation = $SpawnCustomer.translation
@@ -29,6 +29,7 @@ func _process(delta):
 
 func check_for_orders():
 	if Input.is_action_just_released("action") and not $Customers.get_children().empty():
+		print()
 		if $OrderZone.overlaps_body($Player):
 			display_order_popup()
 
@@ -44,6 +45,9 @@ func check_for_dishes():
 	if Input.is_action_just_released("action"):
 		if $DishesZone.overlaps_body($Player):
 			display_dishes_popup()
+		elif $CleanPlates.get_children().empty():
+			# TODO display "no clean plate" message
+			pass
 
 func display_dishes_popup():
 	$UI/DishesPopup.set_position(get_popup_position())
@@ -65,12 +69,29 @@ func move_all_customers():
 		customer.move_two_unit()
 
 func _on_DishesPopup_id_pressed(menu_id):
-	make_dish(menu_id)
+	spawn_new_plate(menu_id)
 
 func make_dish(menu_id):
 	print("make dish " + str(menu_id))
 
 	# display progress bar
+
+func spawn_new_plate(menu_id):
+	var plate_to_remove = $CleanPlates.get_child(0)
+	if plate_to_remove != null:
+		$CleanPlates.remove_child(plate_to_remove)
+	#	for a in 50:
+		for plate in $Plates.get_children():
+			print("move")
+			plate.apply_impulse(Vector3(), Vector3.BACK * 4)
+
+	#	for a in 50:
+		var plate = plate_scn.instance()
+		plate.translation = $PlateSpawnerPosition.translation
+		# TODO change color regarding menu id
+		$Plates.add_child(plate)
+
+		plate.get_node("Particles").emitting = true
 
 
 ################
