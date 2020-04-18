@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets/3D/Levels/resto/restaurant-5-world.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://Assets/3D/Levels/resto/restaurant-2-world.obj" type="ArrayMesh" id=2]
 [ext_resource path="res://Game.gd" type="Script" id=4]
 
 [sub_resource type="ConcavePolygonShape" id=1]
@@ -38,7 +38,6 @@ material/0 = SubResource( 3 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.6517, 3.0231, 11.2832 )
 
 [node name="Obstacle" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.55754, 2.75632 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Obstacle"]
 shape = SubResource( 4 )
@@ -47,11 +46,7 @@ shape = SubResource( 4 )
 mesh = SubResource( 5 )
 material/0 = null
 
-[node name="restorant" type="MeshInstance" parent="."]
-transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 9.2558, 0.477234, 15.4333 )
+[node name="restaurant-2-world" type="MeshInstance" parent="Obstacle"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24.2605, 33.8859, 51.8736 )
 mesh = ExtResource( 2 )
 material/0 = null
-
-[node name="StaticBody" type="StaticBody" parent="restorant"]
-
-[node name="CollisionShape" type="CollisionShape" parent="restorant/StaticBody"]
