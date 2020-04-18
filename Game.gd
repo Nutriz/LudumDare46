@@ -16,6 +16,7 @@ func _process(delta):
 			move_all_customers()
 
 
+
 func add_new_customer():
 	var customer = customer_scn.instance()
 	customer.translation = $SpawnCustomer.translation
