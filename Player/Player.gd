@@ -2,9 +2,9 @@ extends KinematicBody
 
 var gravity = Vector3.DOWN * 10
 var vel = Vector3()
-export var speed = 5
-export var rotate_speed = 0.1
-export var MAX_SPEED = 4
+export var speed = 2
+export var rotate_speed = 0.05
+export var MAX_SPEED = 2
 
 func _ready():
 	pass
@@ -22,16 +22,16 @@ func handle_input():
 
 	var acc = Vector3()
 
-	if (Input.is_action_pressed("up")):
+	if Input.is_action_pressed("up"):
 		acc += -transform.basis.z * speed
-	elif (Input.is_action_pressed("down")):
+	elif Input.is_action_pressed("down"):
 		acc += transform.basis.z * speed
 	else:
 		vel *= 0.9
 
-	if (Input.is_action_pressed("left")):
+	if Input.is_action_pressed("left"):
 		rotate_y(rotate_speed)
-	elif (Input.is_action_pressed("right")):
+	elif Input.is_action_pressed("right"):
 		rotate_y(-rotate_speed)
 
 	vel += acc

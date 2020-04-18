@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Customer/Customer.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World/World.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Game.gd" type="Script" id=4]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 1.4, 0.1, 1 )
 
 [node name="Game" type="Spatial"]
 script = ExtResource( 4 )
@@ -18,7 +21,7 @@ transform = Transform( 0.920239, -0.284861, 0.268355, 0, 0.685704, 0.727881, -0.
 current = true
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2517, 1.5231, 4.8832 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2517, 1.5231, 2.8832 )
 
 [node name="Camera" type="Camera" parent="Player"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0 )
@@ -51,3 +54,49 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3638, 0.04309, 4.646 )
 
 [node name="OrderLookAtPosition" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.764, 1.5, 4.646 )
+
+[node name="OrderZone" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 5 )
+gravity_vec = Vector3( 0, 0, 0 )
+gravity = 0.0
+
+[node name="CollisionShape" type="CollisionShape" parent="OrderZone"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="DishesZone" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 5 )
+gravity_vec = Vector3( 0, 0, 0 )
+gravity = 0.0
+
+[node name="CollisionShape" type="CollisionShape" parent="DishesZone"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 0, -10.5 )
+shape = SubResource( 1 )
+
+[node name="UI" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DishesPopup" type="PopupMenu" parent="UI"]
+margin_left = 62.0
+margin_top = 294.0
+margin_right = 162.0
+margin_bottom = 364.0
+items = [ "Red menu", null, 0, false, false, 0, 0, null, "", false, "Green menu", null, 0, false, false, 1, 0, null, "", false, "Blue menu", null, 0, false, false, 2, 0, null, "", false ]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OrderMenu" type="AcceptDialog" parent="UI"]
+margin_right = 165.0
+margin_bottom = 70.0
+window_title = "Order"
+dialog_text = "Hi, I want a Red menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="id_pressed" from="UI/DishesPopup" to="." method="_on_DishesPopup_id_pressed"]
+[connection signal="confirmed" from="UI/OrderMenu" to="." method="_on_OrderMenu_confirmed"]

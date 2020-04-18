@@ -19,7 +19,7 @@ func _process(delta):
 
 func _physics_process(delta):
 	vel += gravity * delta
-	if (target_x != null and translation.x <= target_x):
+	if target_x != null and translation.x <= target_x:
 		vel.x += 0.05
 	else:
 		vel.x = 0
