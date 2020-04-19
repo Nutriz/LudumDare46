@@ -1,0 +1,13 @@
+[remap]
+
+importer="MagicaVoxel-Importer"
+type="Mesh"
+path="res://.import/baby.vox-4eedf20f546dfbfe31dc45995706ebff.mesh"
+
+[deps]
+
+source_file="res://Assets/3D/objects/baby.vox"
+dest_files=[ "res://.import/baby.vox-4eedf20f546dfbfe31dc45995706ebff.mesh" ]
+
+[params]
+

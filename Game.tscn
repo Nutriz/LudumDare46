@@ -31,11 +31,11 @@ transform = Transform( 0.974217, -0.16422, 0.154704, 0, 0.685704, 0.72788, -0.22
 current = true
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( -2.8213e-07, 0, 1, 0, 1, 0, -1, 0, -2.8213e-07, 3.2417, 1.5231, 4.4932 )
+transform = Transform( -2.8213e-07, 0, 1, 0, 1, 0, -1, 0, -2.8213e-07, 3.2417, -2.36391, 3.45196 )
 speed = 8
 
 [node name="Camera" type="Camera" parent="Player"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.381485, 3.85335, -0.0491333 )
 
 [node name="TableCustomers" type="Spatial" parent="."]
 

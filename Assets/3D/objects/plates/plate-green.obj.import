@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/plate-green.obj-edaaa1b343de92c8c85e0548de3a1fd5.mesh"
+
+[deps]
+
+files=[ "res://.import/plate-green.obj-edaaa1b343de92c8c85e0548de3a1fd5.mesh" ]
+
+source_file="res://Assets/3D/objects/plates/plate-green.obj"
+dest_files=[ "res://.import/plate-green.obj-edaaa1b343de92c8c85e0548de3a1fd5.mesh", "res://.import/plate-green.obj-edaaa1b343de92c8c85e0548de3a1fd5.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

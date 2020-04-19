@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/plate-empty.obj-d3179d87795d6a84d9300a20a360db7b.mesh"
+
+[deps]
+
+files=[ "res://.import/plate-empty.obj-d3179d87795d6a84d9300a20a360db7b.mesh" ]
+
+source_file="res://Assets/3D/objects/plates/plate-empty.obj"
+dest_files=[ "res://.import/plate-empty.obj-d3179d87795d6a84d9300a20a360db7b.mesh", "res://.import/plate-empty.obj-d3179d87795d6a84d9300a20a360db7b.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

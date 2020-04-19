@@ -1,0 +1,13 @@
+[remap]
+
+importer="MagicaVoxel-Importer"
+type="Mesh"
+path="res://.import/plate.vox-0a1da6afe0e29cc399926968e42f3b6e.mesh"
+
+[deps]
+
+source_file="res://Assets/3D/objects/plates/plate.vox"
+dest_files=[ "res://.import/plate.vox-0a1da6afe0e29cc399926968e42f3b6e.mesh" ]
+
+[params]
+
