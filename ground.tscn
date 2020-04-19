@@ -1,0 +1,630 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/3D/Levels/restaurant/restaurant-1.png" type="Texture" id=1]
+[ext_resource path="res://Assets/3D/Levels/restaurant/restaurant-1.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://Assets/3D/objects/tree/tree.fbx" type="PackedScene" id=3]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_texture = ExtResource( 1 )
+
+[node name="ground" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.68145, 9.403 )
+
+[node name="restaurant-1" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.64514 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-2" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15.3549 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-3" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -8.64514 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-5" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 3.35486 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-6" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 15.3549 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-4" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.35486 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-12" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -35.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-11" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-10" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -35.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-9" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -23.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-8" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -11.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-7" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-18" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -35.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-17" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -11.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-16" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -35.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-15" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -23.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-14" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -11.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-13" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -23.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-24" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -8.64514 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-23" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 15.3549 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-22" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -8.64514 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-21" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 3.35486 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-20" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 15.3549 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-19" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 3.35486 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-30" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, -8.64514 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-29" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, 15.3549 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-28" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 0, -8.64514 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-27" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 0, 3.35486 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-26" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 0, 15.3549 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-25" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, 3.35486 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-36" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, -35.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-35" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, -11.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-34" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 0, -35.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-33" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 0, -23.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-32" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 0, -11.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-31" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, -23.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-42" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 0, -35.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-41" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 0, -11.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-40" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, -35.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-39" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, -23.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-38" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, -11.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-37" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 0, -23.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-48" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 0, -51.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-47" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 0, -27.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-46" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, -51.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-45" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, -39.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-44" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, -27.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-43" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 0, -39.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-54" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, -51.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-53" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, -27.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-52" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, -51.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-51" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, -39.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-50" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, -27.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-49" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, -39.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-60" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, -35.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-116" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -24.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-115" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -20.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-59" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, -11.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-58" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, -35.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-57" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, -23.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-56" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, -11.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-55" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, -23.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-66" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, -18.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-65" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, 5.35486 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-64" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, -18.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-63" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, -6.64514 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-62" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, 5.35486 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-61" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, -6.64514 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-72" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0, -18.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-71" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0, 5.35486 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-70" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -18.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-69" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -6.64514 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-68" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 5.35486 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-67" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0, -6.64514 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-78" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0, -8.64514 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-77" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0, 15.3549 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-76" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -8.64514 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-75" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 3.35486 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-74" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 15.3549 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-73" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0, 3.35486 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-84" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -54.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-83" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -30.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-82" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -54.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-81" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -42.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-80" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -30.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-79" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -42.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-90" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -54.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-89" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -30.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-88" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, -54.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-87" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, -42.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-86" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, -30.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-85" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -42.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-96" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, -54.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-95" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, -30.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-94" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, -54.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-93" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, -42.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-92" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, -30.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-91" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, -42.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-102" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 39, 0, -54.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-101" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 39, 0, -30.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-100" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 51, 0, -54.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-99" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 51, 0, -42.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-98" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 51, 0, -30.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-97" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 39, 0, -42.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-108" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 39, 0, -32.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-107" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 39, 0, -8.64514 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-106" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 51, 0, -32.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-105" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 51, 0, -20.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-104" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 51, 0, -8.64514 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-103" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 39, 0, -20.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-114" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 39, 0, -15.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-113" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 39, 0, 8.35486 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-112" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 51, 0, -15.6451 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-111" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 51, 0, -3.64514 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-110" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 51, 0, 8.35486 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="restaurant-109" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 39, 0, -3.64514 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )
+
+[node name="trees" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0 )
+
+[node name="tree" parent="trees" instance=ExtResource( 3 )]
+transform = Transform( 12, 0, 0, 0, 12, 0, 0, 0, 12, -21, -1, -43 )
+
+[node name="tree2" parent="trees" instance=ExtResource( 3 )]
+transform = Transform( 12, 0, 0, 0, 12, 0, 0, 0, 12, -5, -1, -28 )
+
+[node name="tree3" parent="trees" instance=ExtResource( 3 )]
+transform = Transform( 8.48528, 0, -8.48528, 0, 12, 0, 8.48528, 0, 8.48528, -13, -1, -14 )
+
+[node name="tree4" parent="trees" instance=ExtResource( 3 )]
+transform = Transform( 0, 0, 12, 0, 12, 0, -12, 0, 0, -22, -1, -26 )
+
+[node name="tree8" parent="trees" instance=ExtResource( 3 )]
+transform = Transform( 10.3923, 0, 6, 0, 12, 0, -6, 0, 10.3923, 9.75481, -1, -43.3074 )
+
+[node name="tree7" parent="trees" instance=ExtResource( 3 )]
+transform = Transform( 10.3923, 0, 6, 0, 12, 0, -6, 0, 10.3923, 31.1112, -1, -38.317 )
+
+[node name="tree6" parent="trees" instance=ExtResource( 3 )]
+transform = Transform( 11.5911, 0, -3.10583, 0, 12, 0, 3.10583, 0, 11.5911, 31.183, -1, -22.1926 )
+
+[node name="tree5" parent="trees" instance=ExtResource( 3 )]
+transform = Transform( -6, 0, 10.3923, 0, 12, 0, -10.3923, 0, -6, 17.3888, -1, -28.0849 )
+
+[node name="tree12" parent="trees" instance=ExtResource( 3 )]
+transform = Transform( 10.3923, 0, -6, 0, 12, 0, 6, 0, 10.3923, 25.2548, -1, -21.3074 )
+
+[node name="tree11" parent="trees" instance=ExtResource( 3 )]
+transform = Transform( 10.3923, 0, -6, 0, 12, 0, 6, 0, 10.3923, 31.6112, -1, -0.31699 )
+
+[node name="tree10" parent="trees" instance=ExtResource( 3 )]
+transform = Transform( 3.10583, 0, -11.5911, 0, 12, 0, 11.5911, 0, 3.10583, 17.683, -1, 7.80737 )
+
+[node name="tree9" parent="trees" instance=ExtResource( 3 )]
+transform = Transform( 6, 0, 10.3923, 0, 12, 0, -10.3923, 0, 6, 15.8888, -1, -7.08493 )

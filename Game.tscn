@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Customer/Customer.tscn" type="PackedScene" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://Navigation.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Plate.tscn" type="PackedScene" id=6]
 [ext_resource path="res://babyphone/babyphone.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Baby/Baby.tscn" type="PackedScene" id=8]
+[ext_resource path="res://ground.tscn" type="PackedScene" id=9]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.8, 0.1, 0.9 )
@@ -24,7 +26,12 @@ extents = Vector3( 1.044, 0.194, 0.314 )
 script = ExtResource( 4 )
 
 [node name="Sun" type="DirectionalLight" parent="."]
-transform = Transform( 0.582856, 0.756329, -0.297062, 0, 0.365581, 0.93078, 0.812576, -0.54251, 0.213081, -9.00872, 7.19593, 0.11 )
+transform = Transform( -0.073198, 0.750398, -0.65692, -0.269147, 0.619384, 0.737511, 0.960313, 0.230793, 0.15663, -9.34269, 9.57334, 0.11 )
+light_color = Color( 0.964706, 0.929412, 0.0313726, 1 )
+light_indirect_energy = 0.66
+light_specular = 0.47
+shadow_enabled = true
+shadow_contact = 3.78
 
 [node name="World" parent="." instance=ExtResource( 3 )]
 
@@ -231,6 +238,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.55 )
 
 [node name="ReadyPlates" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.2 )
+
+[node name="baby" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6986, 0.519675, -5.67406 )
+
+[node name="ground" parent="." instance=ExtResource( 9 )]
 [connection signal="body_exited" from="DoorZone" to="." method="_on_DoorZone_body_exited"]
 [connection signal="id_pressed" from="UI/DishesPopup" to="." method="_on_DishesPopup_id_pressed"]
 [connection signal="confirmed" from="UI/OrderMenu" to="." method="_on_OrderMenu_confirmed"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/restaurant-2-cradle.obj-92cf8b8f52c85902358a272eb5a8edfb.mesh"
+
+[deps]
+
+files=[ "res://.import/restaurant-2-cradle.obj-92cf8b8f52c85902358a272eb5a8edfb.mesh" ]
+
+source_file="res://Assets/3D/Levels/restaurant/restaurant-2-cradle.obj"
+dest_files=[ "res://.import/restaurant-2-cradle.obj-92cf8b8f52c85902358a272eb5a8edfb.mesh", "res://.import/restaurant-2-cradle.obj-92cf8b8f52c85902358a272eb5a8edfb.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
