@@ -15,6 +15,9 @@ func _ready():
 	Autoload.popularity_progress_bar = $UI/RestorantStats/ProgressBar
 	Autoload.popularity_progress_bar.value = 30
 	Autoload.order_zone = $OrderZone
+	Autoload.great_sound = $Great
+	Autoload.bad_sound = $Bad
+
 	randomize()
 	spawn_new_customer()
 
@@ -41,6 +44,7 @@ func check_for_orders():
 			for child in $Customers.get_children():
 				if $OrderZone.overlaps_body(child):
 					display_order_popup()
+					$Blip.play()
 
 
 func display_order_popup():
@@ -55,6 +59,7 @@ func check_for_dishes():
 	if Input.is_action_just_released("action"):
 		if $DishesZone.overlaps_body($Player):
 			display_dishes_popup()
+			$Blip.play()
 		elif $CleanPlates.get_children().empty():
 			# TODO display "no clean plate" message
 			pass
@@ -71,6 +76,7 @@ func check_for_holding_plate():
 					$ReadyPlates.remove_child(plate)
 					$Player.take_ready_plate(plate)
 					plate.stop_ready_timer()
+					$Blip.play()
 				return
 
 func check_for_dirty_plate():
@@ -82,11 +88,13 @@ func check_for_dirty_plate():
 				var plate = areas.get_node("PlateStatic")
 				if plate != null && plate.is_dirty() and $Player.holding_plate == null and plate.get_node("Area").overlaps_body($Player):
 					$Player.take_dirty_plate(plate)
+					$Blip.play()
 					return
 		# on ready bar
 		for plate in $ReadyPlates.get_children():
 			if plate.is_dirty() and $Player.dirty_plate_count < 4 and $Player.holding_plate == null and plate.get_node("Area").overlaps_body($Player):
 				$Player.take_dirty_plate(plate)
+				$Blip.play()
 				return
 
 func check_for_serving_plate():
@@ -102,12 +110,14 @@ func check_for_serving_plate():
 						plate.translation = table_area.get_node("PlatePosition").translation
 						table_area.add_child(plate)
 						plate.start_dirty_timer()
+						$Blip.play()
 
 func check_for_dishwasher():
 	if Input.is_action_just_released("action") and $Player.dirty_plate_count > 0:
 		if $DishwasherZone.overlaps_body($Player):
 			$Player.remove_dirty_plate()
 			start_timer_for_cleaned()
+			$Blip.play()
 
 func start_timer_for_cleaned():
 	var timer = Timer.new()
@@ -142,11 +152,6 @@ func _on_OrderMenu_confirmed():
 func _on_DishesPopup_id_pressed(menu_id):
 	spawn_new_plate(menu_id)
 
-func make_dish(menu_id):
-	print("make dish " + str(menu_id))
-
-	# display progress bar
-
 func spawn_new_plate(menu_id):
 	var plate_to_remove = $CleanPlates.get_child(0)
 	if plate_to_remove != null:
@@ -159,6 +164,7 @@ func spawn_new_plate(menu_id):
 		$ReadyPlates.add_child(plate)
 		plate.set_type(menu_id)
 		plate.get_node("Particles").emitting = true
+		$Blip.play()
 
 ################
 # Utils functions

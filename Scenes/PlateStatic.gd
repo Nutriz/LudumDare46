@@ -22,8 +22,8 @@ func stop_ready_timer():
 	$ReadyDirtyTimer.stop()
 
 func _on_ReadyDirtyTimer_timeout():
-	print("timeout ready timer")
 	set_dirty()
+	Autoload.bad_sound.play()
 
 func _on_DirtyPlate_timeout():
 	set_dirty()

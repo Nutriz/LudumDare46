@@ -56,9 +56,10 @@ func served(served_id_menu):
 	$EatTimer.start()
 	if ordered_id_menu != served_id_menu:
 		happiness -= 1
+		Autoload.bad_sound.play()
 		Autoload.popularity_progress_bar.value = Autoload.popularity_progress_bar.value - 1
-	# TODO play some grumpy sound
-
+	else:
+		Autoload.great_sound.play()
 
 func _on_EatTimer_timeout():
 	table_for_eat.is_free = true
