@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Customer/Customer.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Game.gd" type="Script" id=4]
 [ext_resource path="res://Navigation.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Plate.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Baby/Baby.tscn" type="PackedScene" id=7]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.8, 0.1, 0.9 )
@@ -20,7 +21,8 @@ extents = Vector3( 1.044, 0.194, 0.314 )
 script = ExtResource( 4 )
 
 [node name="Sun" type="DirectionalLight" parent="."]
-transform = Transform( 0.808863, 0.310633, -0.499247, 0, 0.849064, 0.52829, 0.587997, -0.427314, 0.686777, -9.00872, 7.19593, 0.11 )
+transform = Transform( 0.582856, 0.756329, -0.297062, 0, 0.365581, 0.93078, 0.812576, -0.54251, 0.213081, -9.00872, 7.19593, 0.11 )
+shadow_enabled = true
 
 [node name="World" parent="." instance=ExtResource( 3 )]
 
@@ -216,6 +218,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.55 )
 
 [node name="ReadyPlates" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.2 )
+
+[node name="Baby" parent="." instance=ExtResource( 7 )]
 [connection signal="body_exited" from="DoorZone" to="." method="_on_DoorZone_body_exited"]
 [connection signal="id_pressed" from="UI/DishesPopup" to="." method="_on_DishesPopup_id_pressed"]
 [connection signal="confirmed" from="UI/OrderMenu" to="." method="_on_OrderMenu_confirmed"]

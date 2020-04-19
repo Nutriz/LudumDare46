@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/baby.obj-343300d35c838cb1f8ca36ec6bfeee10.mesh"
+
+[deps]
+
+files=[ "res://.import/baby.obj-343300d35c838cb1f8ca36ec6bfeee10.mesh" ]
+
+source_file="res://Assets/3D/objects/baby.obj"
+dest_files=[ "res://.import/baby.obj-343300d35c838cb1f8ca36ec6bfeee10.mesh", "res://.import/baby.obj-343300d35c838cb1f8ca36ec6bfeee10.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 0.04, 0.04, 0.04 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

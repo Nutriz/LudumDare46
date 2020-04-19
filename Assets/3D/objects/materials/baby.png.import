@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/restaurant-0-cradle.png-2d54c796e71e1679a5b3452e9d015bbb.s3tc.stex"
-path.etc2="res://.import/restaurant-0-cradle.png-2d54c796e71e1679a5b3452e9d015bbb.etc2.stex"
+path.s3tc="res://.import/baby.png-01c40707f9810a6211a1ffef3eb44bf5.s3tc.stex"
+path.etc2="res://.import/baby.png-01c40707f9810a6211a1ffef3eb44bf5.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/3D/Levels/restaurant/restaurant-0-cradle.png"
-dest_files=[ "res://.import/restaurant-0-cradle.png-2d54c796e71e1679a5b3452e9d015bbb.s3tc.stex", "res://.import/restaurant-0-cradle.png-2d54c796e71e1679a5b3452e9d015bbb.etc2.stex" ]
+source_file="res://Assets/3D/objects/materials/baby.png"
+dest_files=[ "res://.import/baby.png-01c40707f9810a6211a1ffef3eb44bf5.s3tc.stex", "res://.import/baby.png-01c40707f9810a6211a1ffef3eb44bf5.etc2.stex" ]
 
 [params]
 

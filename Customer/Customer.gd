@@ -8,7 +8,7 @@ var path
 var path_ind = 0
 
 var happiness = 3 # 1 = sad, 3 = happy
-var hungry = 2    # 1 = not hungry, 4 = very hungry
+#var hungry = 2    # 1 = not hungry, 4 = very hungry
 
 var target_x
 
