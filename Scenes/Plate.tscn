@@ -27,6 +27,7 @@ extents = Vector3( 4.32248, 1, 0.9 )
 [node name="Plate" type="RigidBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0543229, 0 )
 mode = 2
+can_sleep = false
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 

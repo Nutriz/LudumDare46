@@ -14,6 +14,8 @@ var target_x
 
 var ordered_id_menu
 
+var table_for_eat
+
 func _ready():
 	move_lock_y = true
 
@@ -22,36 +24,42 @@ func _process(delta):
 
 func _physics_process(delta):
 	vel += gravity * delta
-
-	if path != null:
+	if path == null:
+		var current_ordering = false
+		for customer in Autoload.order_zone.get_overlapping_bodies():
+			if customer.get_name().begins_with("Customer"):
+				return
+		var space_state = get_world().direct_space_state
+		var look_at = translation
+		look_at.x += 2
+#		var result = space_state.intersect_ray(translation, look_at, [self, Autoload.player])
+#
+#		print(result.values())
+		vel.x = speed
+		move_and_slide(vel, Vector3.UP)
+	else:
 		if path_ind < path.size():
-			var look_to = Vector3(path[path_ind])
-			look_at(path[path_ind], Vector3.UP)
+			# TODO fix look_at
+#			var look_to = Vector3(path[path_ind])
+#			look_at(path[path_ind], Vector3.UP)
 			var move_vec = (path[path_ind] - global_transform.origin)
 			if move_vec.length() < 0.1:
 				path_ind += 1
 			else:
 				move_and_slide(move_vec.normalized() * speed, Vector3.UP)
-		else:
-			rotate_y(-90)
-			path = null
-	elif target_x != null and translation.x <= target_x:
-		vel.x += 0.05
-		vel = move_and_slide(vel, Vector3.UP)
-	else:
-		vel.x = 0
-		target_x = null
 
 func move_two_unit():
-	target_x = translation.x + 2
+	target_x = translation.x + 1.5
 
 func served(served_id_menu):
 	print("Served menu: " + str(served_id_menu) + ", ordered: " + str(ordered_id_menu))
 	$EatTimer.start()
 	if ordered_id_menu != served_id_menu:
 		happiness -= 1
+		Autoload.popularity_progress_bar.value = Autoload.popularity_progress_bar.value - 1
 	# TODO play some grumpy sound
 
 
 func _on_EatTimer_timeout():
+	table_for_eat.is_free = true
 	queue_free()

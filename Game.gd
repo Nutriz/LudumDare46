@@ -2,12 +2,19 @@ extends Spatial
 
 onready var customer_scn = load("res://Customer/Customer.tscn")
 onready var plate_scn = load("res://Scenes/PlateStatic.tscn")
+onready var plate_clean_scn = load("res://Scenes/Plate.tscn")
 
 var move_to_apartment
 var next_menu
 
 func _ready():
+	for i in range(20):
+		add_clean_plate()
+	Autoload.popularity_progress_bar = $UI/RestorantStats/ProgressBar
+	Autoload.popularity_progress_bar.value = 30
+	Autoload.order_zone = $OrderZone
 	randomize()
+	spawn_new_customer()
 
 func _process(delta):
 	move_camera()
@@ -15,10 +22,10 @@ func _process(delta):
 func _physics_process(delta):
 	check_for_orders()
 	check_for_dishes()
-	check_for_holding_plate()
 	check_for_dirty_plate()
+	check_for_holding_plate()
 	check_for_serving_plate()
-#	check_for_dishwasher()
+	check_for_dishwasher()
 
 	if Input.is_action_pressed("quit"):
 		get_tree().quit()
@@ -26,18 +33,12 @@ func _physics_process(delta):
 	if Input.is_action_just_released("switch_camera"):
 		$Camera.current = !$Camera.current
 
-#func add_new_customer():
-#	var customer = customer_scn.instance()
-#	customer.translation = $SpawnCustomer.translation
-#	var look_at = Vector3($OrderLookAtPosition.translation.x, 1.5, $OrderLookAtPosition.translation.z)
-#	customer.look_at_from_position($OrderPosition.translation, look_at, Vector3.UP)
-#	$Customers.add_child(customer)
-
 func check_for_orders():
 	if Input.is_action_just_released("action") and not $Customers.get_children().empty():
-		print()
 		if $OrderZone.overlaps_body($Player):
-			display_order_popup()
+			for child in $Customers.get_children():
+				if $OrderZone.overlaps_body(child):
+					display_order_popup()
 
 func display_order_popup():
 	var pos = $Camera.unproject_position($Customers.get_child(0).translation)
@@ -63,11 +64,15 @@ func check_for_holding_plate():
 	if Input.is_action_just_released("action"):
 		for plate in $ReadyPlates.get_children():
 			if $Player.holding_plate == null and plate.get_node("Area").overlaps_body($Player):
-				$ReadyPlates.remove_child(plate)
-				$Player.take_ready_plate(plate)
+				if $Player.dirty_plate_count == 0:
+					$ReadyPlates.remove_child(plate)
+					$Player.take_ready_plate(plate)
+					plate.stop_ready_timer()
+				return
 
 func check_for_dirty_plate():
 	if Input.is_action_just_released("action"):
+		# on tables
 		for areas in $Tables.get_children():
 			# TODO must refactor for all tables
 			if areas is Area:
@@ -75,12 +80,10 @@ func check_for_dirty_plate():
 				if plate != null && plate.is_dirty() and $Player.holding_plate == null and plate.get_node("Area").overlaps_body($Player):
 					$Player.take_dirty_plate(plate)
 					return
-
+		# on ready bar
 		for plate in $ReadyPlates.get_children():
-			if plate.is_dirty() and $Player.holding_plate == null and plate.get_node("Area").overlaps_body($Player):
-				$ReadyPlates.remove_child(plate)
-				$Player.take_ready_plate(plate)
-				print("RETURN dirty waiting")
+			if plate.is_dirty() and $Player.dirty_plate_count < 4 and $Player.holding_plate == null and plate.get_node("Area").overlaps_body($Player):
+				$Player.take_dirty_plate(plate)
 				return
 
 func check_for_serving_plate():
@@ -93,39 +96,45 @@ func check_for_serving_plate():
 						var plate = $Player.holding_plate
 						$Player.remove_plate()
 						customers.served(plate.type)
-						plate.translation = $Tables/Table1/PlatePosition.translation
-						$Tables/Table1.add_child(plate)
+						plate.translation = table_area.get_node("PlatePosition").translation
+						table_area.add_child(plate)
 						plate.start_dirty_timer()
 
-#func check_for_dishwasher():
-#	if Input.is_action_just_released("action") and $Player.holding_plate != null:
-#		for table_area in $Tables.get_children():
-#			if table_area is Area and table_area.overlaps_body($Player):
-#				for customers in $TableCustomers.get_children():
-#					print("customer overlap " + table_area.name + " " + str(table_area.overlaps_body(customers)))
-#					if table_area.overlaps_body(customers):
-#						var plate = $Player.holding_plate
-#						$Player.remove_plate()
-#						customers.served(plate.type)
-#						plate.translation = $Tables/Table1/PlatePosition.translation
-#						$Tables/Table1.add_child(plate)
-#						plate.start_dirty_timer()
+func check_for_dishwasher():
+	if Input.is_action_just_released("action") and $Player.dirty_plate_count > 0:
+		if $DishwasherZone.overlaps_body($Player):
+			$Player.remove_dirty_plate()
+			start_timer_for_cleaned()
 
+func start_timer_for_cleaned():
+	var timer = Timer.new()
+	add_child(timer)
+	timer.wait_time = 2
+	timer.one_shot = true
+	timer.connect("timeout", self, "_on_Dishwasher_finished") # BaseButton signal
+	timer.start()
+
+func _on_Dishwasher_finished():
+	add_clean_plate()
+
+func add_clean_plate():
+	var plate = plate_clean_scn.instance()
+	if randi() % 2 == 0:
+		plate.translate(Vector3.BACK * 0.5)
+	$CleanPlates.add_child(plate)
 
 func _on_OrderMenu_confirmed():
-	var current_customer = $Customers.get_child(0)
-	current_customer.ordered_id_menu = next_menu
-	current_customer.path = $Navigation.get_simple_path(current_customer.global_transform.origin, $Tables/Table1.translation)
+	var customer = $Customers.get_child(0)
+	customer.ordered_id_menu = next_menu
+	for table in $Tables.get_children():
+		if table.is_free:
+			table.is_free = false
+			customer.table_for_eat = table
+			break
 
-	$Customers.remove_child(current_customer)
-	$TableCustomers.add_child(current_customer)
-
-	move_all_customers()
-
-# transform 3d position with main camera to 2d position on screen
-func move_all_customers():
-	for customer in $Customers.get_children():
-		customer.move_two_unit()
+	customer.path = $Navigation.get_simple_path(customer.global_transform.origin, customer.table_for_eat.translation)
+	$Customers.remove_child(customer)
+	$TableCustomers.add_child(customer)
 
 func _on_DishesPopup_id_pressed(menu_id):
 	spawn_new_plate(menu_id)
@@ -142,15 +151,10 @@ func spawn_new_plate(menu_id):
 		for plate in $ReadyPlates.get_children():
 			plate.translate(Vector3.BACK)
 
-	#	for a in 50:
 		var plate = plate_scn.instance()
-		plate.set_type(menu_id)
-		plate.translation = $PlateSpawnerPosition.translation
-		# TODO change color regarding menu id
+		plate.translation = $ReadyPlateSpawnerPosition.translation
 		$ReadyPlates.add_child(plate)
-
-#		plate.get_node("Particles").emitting = true
-
+		plate.set_type(menu_id)
 
 ################
 # Utils functions
@@ -177,3 +181,10 @@ func move_camera():
 	else:
 		$Camera.translation = $Camera.translation.linear_interpolate($CameraPositionRestaurant.translation, 0.05)
 
+func _on_CustomerSpawner_timeout():
+	spawn_new_customer()
+
+func spawn_new_customer():
+	var customer = customer_scn.instance()
+	customer.translation = $SpawnCustomerPosition.translation
+	$Customers.add_child(customer)

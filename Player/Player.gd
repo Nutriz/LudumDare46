@@ -38,18 +38,20 @@ func handle_input():
 		vel.z = MAX_SPEED * sign(vel.z)
 
 func take_ready_plate(plate):
-	holding_plate = plate
-	plate.translation = $PlatePosition.translation
-	add_child(plate)
-	print("player holding plate id: " + str(holding_plate.type))
+	if dirty_plate_count < 1:
+		holding_plate = plate
+		plate.translation = $PlatePosition.translation
+		add_child(plate)
+		print("player holding plate id: " + str(holding_plate.type))
 
 func take_dirty_plate(plate):
 	plate.get_parent().remove_child(plate)
 	dirty_plate_count += 1
 	refresh_dirty_plates()
-#	holding_plate = plate
-#	plate.translation = $PlatePosition.translation
-#	add_child(plate)
+
+func remove_dirty_plate():
+	dirty_plate_count -= 1
+	refresh_dirty_plates()
 
 func refresh_dirty_plates():
 	for plate in $DirtyPlates.get_children():
