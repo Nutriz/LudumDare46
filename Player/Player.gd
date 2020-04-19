@@ -7,6 +7,7 @@ export var rotate_speed = 0.06
 export var MAX_SPEED = 5
 
 var holding_plate
+var dirty_plate_count = 0
 
 func _ready():
 	pass
@@ -36,31 +37,27 @@ func handle_input():
 	if (abs(vel.z) > MAX_SPEED):
 		vel.z = MAX_SPEED * sign(vel.z)
 
-func take_plate(id_menu):
-	holding_plate = id_menu
-	print("player holding plate id: " + str(id_menu))
+func take_ready_plate(plate):
+	holding_plate = plate
+	plate.translation = $PlatePosition.translation
+	add_child(plate)
+	print("player holding plate id: " + str(holding_plate.type))
 
-#func handle_input():
-#	var vel_y = vel.y
-#
-#	var acc = Vector3()
-#
-#	if Input.is_action_pressed("up"):
-#		acc += -transform.basis.z * speed
-#	elif Input.is_action_pressed("down"):
-#		acc += transform.basis.z * speed
-#	else:
-#		vel *= 0.9
-#
-#	if Input.is_action_pressed("left"):
-#		rotate_y(rotate_speed)
-#	elif Input.is_action_pressed("right"):
-#		rotate_y(-rotate_speed)
-#
-#	vel += acc
-#	vel.y = vel_y
-#
-#	vel.x = clamp(vel.x, -speed, speed)
-#	vel.z = clamp(vel.z, -speed, speed)
+func take_dirty_plate(plate):
+	plate.get_parent().remove_child(plate)
+	dirty_plate_count += 1
+	refresh_dirty_plates()
+#	holding_plate = plate
+#	plate.translation = $PlatePosition.translation
+#	add_child(plate)
 
+func refresh_dirty_plates():
+	for plate in $DirtyPlates.get_children():
+		plate.visible = false
 
+	for plate_index in dirty_plate_count:
+		$DirtyPlates.get_child(plate_index).visible = true
+
+func remove_plate():
+	remove_child(holding_plate)
+	holding_plate = null

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/3D/Player/perso.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://Assets/3D/objects/plates/plate-dirty.obj" type="ArrayMesh" id=3]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.296073
@@ -11,10 +12,39 @@ height = 1.55736
 script = ExtResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, -0.450848, 3.41313, 0 )
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, -0.00732724, 0.906676, 0.0106363 )
 shape = SubResource( 1 )
 
 [node name="Mesh" type="MeshInstance" parent="."]
-transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 0 )
+transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0.414132, -2.10799, -0.284596 )
 mesh = ExtResource( 2 )
+material/0 = null
+
+[node name="PlatePosition" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.21086, 0 )
+
+[node name="DirtyPlates" type="Spatial" parent="."]
+
+[node name="DirtyPlate1" type="MeshInstance" parent="DirtyPlates"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.970839, 1.29912, -0.951031 )
+visible = false
+mesh = ExtResource( 3 )
+material/0 = null
+
+[node name="DirtyPlate2" type="MeshInstance" parent="DirtyPlates"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.970839, 1.44644, -0.951031 )
+visible = false
+mesh = ExtResource( 3 )
+material/0 = null
+
+[node name="DirtyPlate3" type="MeshInstance" parent="DirtyPlates"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.970839, 1.59596, -0.951031 )
+visible = false
+mesh = ExtResource( 3 )
+material/0 = null
+
+[node name="DirtyPlate4" type="MeshInstance" parent="DirtyPlates"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.970839, 1.74228, -0.951031 )
+visible = false
+mesh = ExtResource( 3 )
 material/0 = null
