@@ -3,8 +3,10 @@ extends KinematicBody
 var gravity = Vector3.DOWN * 10
 var vel = Vector3()
 export var speed = 4
-export var rotate_speed = 0.05
+export var rotate_speed = 0.06
 export var MAX_SPEED = 5
+
+var holding_plate
 
 func _ready():
 	pass
@@ -33,6 +35,10 @@ func handle_input():
 		vel.x = MAX_SPEED * sign(vel.x)
 	if (abs(vel.z) > MAX_SPEED):
 		vel.z = MAX_SPEED * sign(vel.z)
+
+func take_plate(id_menu):
+	holding_plate = id_menu
+	print("player holding plate id: " + str(id_menu))
 
 #func handle_input():
 #	var vel_y = vel.y

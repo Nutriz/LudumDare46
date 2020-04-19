@@ -4,7 +4,6 @@ var gravity = Vector3.DOWN * 10
 var vel = Vector3()
 export var speed = 3
 
-
 var path
 var path_ind = 0
 
@@ -12,6 +11,8 @@ var happiness = 3 # 1 = sad, 3 = happy
 var hungry = 2    # 1 = not hungry, 4 = very hungry
 
 var target_x
+
+var ordered_id_menu
 
 func _ready():
 	move_lock_y = true
@@ -43,3 +44,14 @@ func _physics_process(delta):
 
 func move_two_unit():
 	target_x = translation.x + 2
+
+func served(served_id_menu):
+	print("Served menu: " + str(served_id_menu) + ", ordered: " + str(ordered_id_menu))
+	$EatTimer.start()
+	if ordered_id_menu != served_id_menu:
+		happiness -= 1
+	# TODO play some grumpy sound
+
+
+func _on_EatTimer_timeout():
+	queue_free()

@@ -29,3 +29,8 @@ material/0 = SubResource( 2 )
 transform = Transform( 0.444536, 0, 0, 0, -5.51157e-06, 0.0263089, 0, -0.354048, -7.41711e-05, 0, 1.74314, -0.581505 )
 mesh = SubResource( 3 )
 material/0 = null
+
+[node name="EatTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+[connection signal="timeout" from="EatTimer" to="." method="_on_EatTimer_timeout"]
