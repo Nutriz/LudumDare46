@@ -8,6 +8,8 @@ var move_to_apartment
 var next_menu
 
 func _ready():
+	$World/Apartment/Mesh.mesh.surface_get_material(0).params_blend_mode = 1
+	$UI/WelcomeDialog.visible = true
 	for i in range(20):
 		add_clean_plate()
 	Autoload.popularity_progress_bar = $UI/RestorantStats/ProgressBar
@@ -40,6 +42,7 @@ func check_for_orders():
 				if $OrderZone.overlaps_body(child):
 					display_order_popup()
 
+
 func display_order_popup():
 	var pos = $Camera.unproject_position($Customers.get_child(0).translation)
 	pos.y -= 100
@@ -57,7 +60,7 @@ func check_for_dishes():
 			pass
 
 func display_dishes_popup():
-	$UI/DishesPopup.set_position(get_popup_position())
+	$UI/DishesPopup.set_position(get_popup_position($Player.translation))
 	$UI/DishesPopup.visible = true
 
 func check_for_holding_plate():
@@ -155,12 +158,15 @@ func spawn_new_plate(menu_id):
 		plate.translation = $ReadyPlateSpawnerPosition.translation
 		$ReadyPlates.add_child(plate)
 		plate.set_type(menu_id)
+		plate.get_node("Particles").emitting = true
 
 ################
 # Utils functions
 #################
-func get_popup_position():
-	return $Camera.unproject_position($Player.translation)
+
+func get_popup_position(vector):
+	return $Camera.unproject_position(vector)
+
 
 func get_random_menu():
 	next_menu = randi() % 3
@@ -171,15 +177,18 @@ func get_random_menu():
 	elif next_menu == 2:
 		return "Blue"
 
-
 func _on_DoorZone_body_exited(body):
 	move_to_apartment = !move_to_apartment
 
 func move_camera():
 	if move_to_apartment:
 		$Camera.translation = $Camera.translation.linear_interpolate($CameraPositionApartment.translation, 0.05)
+		$World/Apartment/Mesh.mesh.surface_get_material(0).params_blend_mode = 0
+		$World/Restaurant/Mesh.mesh.surface_get_material(0).params_blend_mode = 1
 	else:
 		$Camera.translation = $Camera.translation.linear_interpolate($CameraPositionRestaurant.translation, 0.05)
+		$World/Restaurant/Mesh.mesh.surface_get_material(0).params_blend_mode = 0
+		$World/Apartment/Mesh.mesh.surface_get_material(0).params_blend_mode = 1
 
 func _on_CustomerSpawner_timeout():
 	spawn_new_customer()
@@ -188,3 +197,24 @@ func spawn_new_customer():
 	var customer = customer_scn.instance()
 	customer.translation = $SpawnCustomerPosition.translation
 	$Customers.add_child(customer)
+
+
+func _on_WelcomeDialog_confirmed():
+	$UI/TutoDialog1.set_position(get_popup_position($PopupPos/Pos1.translation))
+	$UI/TutoDialog1.visible = true
+
+func _on_TutoDialog1_confirmed():
+	$UI/TutoDialog2.set_position(get_popup_position($PopupPos/Pos2.translation))
+	$UI/TutoDialog2.visible = true
+
+func _on_TutoDialog2_confirmed():
+	$UI/TutoDialog3.set_position(get_popup_position($PopupPos/Pos3.translation))
+	$UI/TutoDialog3.visible = true
+
+func _on_TutoDialog3_confirmed():
+	$UI/TutoDialog4.set_position(get_popup_position($PopupPos/Pos4.translation))
+	$UI/TutoDialog4.visible = true
+
+func _on_TutoDialog4_confirmed():
+	$UI/TutoDialog5.set_position(get_popup_position($PopupPos/Pos5.translation))
+	$UI/TutoDialog5.visible = true
