@@ -27,9 +27,12 @@ albedo_texture = ExtResource( 5 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.4, 0.581544, 15.4 )
 
 [node name="Mesh" type="MeshInstance" parent="Restaurant"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.4, -1.2, -15.4 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.47931, -1.14533, 1.79226 )
 mesh = ExtResource( 2 )
 material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape" type="CollisionShape" parent="Restaurant"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.4, -1.2, -15.4 )
@@ -39,9 +42,12 @@ shape = SubResource( 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0 )
 
 [node name="Mesh" type="MeshInstance" parent="Apartment"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -0.6, 2.23517e-08 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8793, -0.545329, 17.1923 )
 mesh = ExtResource( 1 )
 material/0 = SubResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape" type="CollisionShape" parent="Apartment"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -0.6, 2.23517e-08 )
@@ -54,5 +60,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7, -0.6, -0.0999997 )
 shape = SubResource( 4 )
 
 [node name="restaurant-0-cradle" type="MeshInstance" parent="Cradle"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.9118, 0, 17.1301 )
 mesh = ExtResource( 4 )
 material/0 = SubResource( 5 )
