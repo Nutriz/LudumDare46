@@ -150,6 +150,7 @@ func _on_OrderMenu_confirmed():
 	$TableCustomers.add_child(customer)
 
 func _on_DishesPopup_id_pressed(menu_id):
+	$BabyPhone.start_alert()
 	spawn_new_plate(menu_id)
 
 func spawn_new_plate(menu_id):
