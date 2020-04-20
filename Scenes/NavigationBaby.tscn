@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="NavigationMesh" id=1]
+vertices = PoolVector3Array( 11.8776, 0.930468, 0.398654, 15.7776, 0.930468, 0.398654, 15.7776, 0.930468, -1.70135, 8.27756, 0.930468, -2.00135, 7.97756, 0.930468, 3.09865, 11.5776, 0.930468, 3.09865, 11.8776, 0.930468, 0.398654, 8.27756, 0.930468, -2.00135, 8.57756, 0.930468, -4.10135, 13.0776, 0.930468, -4.10135, 13.0776, 0.930468, -5.00135, 7.37756, 0.930468, -5.00135, 7.37756, 0.930468, -5.00135, 7.97756, 0.930468, 3.09865, 8.27756, 0.930468, -2.00135, 8.27756, 0.930468, -2.00135, 8.57756, 0.930468, -4.10135, 7.37756, 0.930468, -5.00135 )
+polygons = [ PoolIntArray( 3, 2, 0 ), PoolIntArray( 0, 2, 1 ), PoolIntArray( 7, 6, 4 ), PoolIntArray( 4, 6, 5 ), PoolIntArray( 11, 10, 8 ), PoolIntArray( 8, 10, 9 ), PoolIntArray( 14, 13, 12 ), PoolIntArray( 17, 16, 15 ) ]
+
+[sub_resource type="CubeMesh" id=2]
+
+[node name="NavigationBaby" type="Navigation"]
+
+[node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="."]
+navmesh = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="NavigationMeshInstance"]
+transform = Transform( 3.41854, 0, 0, 0, 0.188372, 0, 0, 0, 1, 10.1961, 12, -4.60135 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="NavigationMeshInstance"]
+transform = Transform( -0.677773, 0, 0, 0, 0.188372, 0, 0, 0, 3.03197, 8.01451, 12, -0.646654 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="MeshInstance3" type="MeshInstance" parent="NavigationMeshInstance"]
+transform = Transform( -4.22813, 0, 0, 0, 0.188372, 0, 0, 0, 1.49057, 12.2305, 12, -0.646654 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="MeshInstance4" type="MeshInstance" parent="NavigationMeshInstance"]
+transform = Transform( -2.28224, 0, 0, 0, 0.188372, 0, 0, 0, 1.49057, 9.79938, 12, 2.09688 )
+mesh = SubResource( 2 )
+material/0 = null

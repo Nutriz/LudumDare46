@@ -17,7 +17,7 @@ func _ready():
 	Autoload.order_zone = $OrderZone
 	Autoload.great_sound = $Great
 	Autoload.bad_sound = $Bad
-
+	$baby.navigation = $NavigationBaby
 	randomize()
 	spawn_new_customer()
 
@@ -148,6 +148,7 @@ func _on_OrderMenu_confirmed():
 	customer.path = $Navigation.get_simple_path(customer.global_transform.origin, customer.table_for_eat.translation)
 	$Customers.remove_child(customer)
 	$TableCustomers.add_child(customer)
+	
 
 func _on_DishesPopup_id_pressed(menu_id):
 	$BabyPhone.start_alert()
