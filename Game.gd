@@ -64,11 +64,12 @@ func display_order_popup():
 func check_for_dishes():
 	if Input.is_action_just_released("action"):
 		if $DishesZone.overlaps_body($Player):
-			display_dishes_popup()
-			$Blip.play()
-		elif $CleanPlates.get_children().empty():
-			# TODO display "no clean plate" message
-			pass
+			if $ReadyPlates.get_child_count() < 6:
+				display_dishes_popup()
+				$Blip.play()
+			else:
+				$Bad2.play()
+				print("full ready plates")
 
 func display_dishes_popup():
 	$UI/DishesPopup.set_position(get_popup_position($Player.translation))
@@ -89,7 +90,6 @@ func check_for_dirty_plate():
 	if Input.is_action_just_released("action"):
 		# on tables
 		for table in $Tables.get_children():
-			# TODO must refactor for all tables
 			if table is Area:
 				var plate = table.get_node("PlateStatic")
 				if plate != null && plate.is_dirty() and $Player.holding_plate == null and plate.get_node("Area").overlaps_body($Player):
@@ -120,11 +120,12 @@ func check_for_serving_plate():
 						$Blip.play()
 
 func check_for_dishwasher():
-	if Input.is_action_just_released("action") and $Player.dirty_plate_count > 0:
+	if Input.is_action_just_released("action"):
 		if $DishwasherZone.overlaps_body($Player):
-			$Player.remove_dirty_plate()
-			start_timer_for_cleaned()
-			$Blip.play()
+			if $Player.dirty_plate_count > 0:
+				$Player.remove_dirty_plate()
+				start_timer_for_cleaned()
+				$Blip.play()
 
 func check_for_takeing_baby():
 	if Input.is_action_just_released("action") and Autoload.baby.isEscaped and not Autoload.baby.dead:
@@ -170,21 +171,21 @@ func _on_OrderMenu_confirmed():
 			return
 
 func _on_DishesPopup_id_pressed(menu_id):
-	spawn_new_plate(menu_id)
-
-func spawn_new_plate(menu_id):
 	var plate_to_remove = $CleanPlates.get_child(0)
 	if plate_to_remove != null:
-		$CleanPlates.remove_child(plate_to_remove)
-		for plate in $ReadyPlates.get_children():
-			plate.translate(Vector3.BACK)
+		plate_to_remove.queue_free()
 
 		var plate = plate_scn.instance()
-		plate.translation = $ReadyPlateSpawnerPosition.translation
 		$ReadyPlates.add_child(plate)
 		plate.set_type(menu_id)
 		plate.get_node("Particles").emitting = true
 		$Blip.play()
+
+		var pos = 0
+		for clean_plate in $ReadyPlates.get_children():
+			clean_plate.translation = Vector3(0, 0, pos*1)
+			pos += 1
+
 
 ################
 # Utils functions
