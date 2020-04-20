@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/customer-angry.ogg-fb33ef35585ee998f7d172ee5c37164d.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/customer-angry.ogg"
+dest_files=[ "res://.import/customer-angry.ogg-fb33ef35585ee998f7d172ee5c37164d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

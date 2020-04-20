@@ -37,6 +37,7 @@ func _physics_process(delta):
 
 func _on_Timer_timeout():
 	randomRotate();
+	$AudioStreamPlayer3D.play();
 	ray.enabled = true;
 	pass # Replace with function body.
 
@@ -51,6 +52,7 @@ func randomRotate():
 func _on_Timer_escape_timeout():
 	translation = Vector3(13.496,0, -0.411)
 	isEscaped = true;
+	$AudioStreamPlayer3D.play();
 	$Timer_dead.start()
 	pass # Replace with function body.
 

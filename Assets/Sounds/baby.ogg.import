@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/baby.ogg-fcc32ebfd270c0006f6ec480cc150ce7.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/baby.ogg"
+dest_files=[ "res://.import/baby.ogg-fcc32ebfd270c0006f6ec480cc150ce7.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
