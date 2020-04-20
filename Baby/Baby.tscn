@@ -44,7 +44,7 @@ one_shot = true
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.664263, 0 )
 stream = ExtResource( 3 )
-unit_db = 5.565
+unit_db = 12.522
 
 [node name="TakeArea" type="Area" parent="."]
 

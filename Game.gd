@@ -10,7 +10,7 @@ var next_menu
 func _ready():
 	$World/Apartment/Mesh.mesh.surface_get_material(0).params_blend_mode = 1
 	$UI/WelcomeDialog.visible = true
-	for i in range(20):
+	for i in range(12):
 		add_clean_plate()
 	Autoload.popularity_progress_bar = $UI/ProgressBar
 	Autoload.order_zone = $OrderZone
