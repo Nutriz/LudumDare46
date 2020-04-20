@@ -12,11 +12,11 @@ func _ready():
 	$UI/WelcomeDialog.visible = true
 	for i in range(20):
 		add_clean_plate()
-	Autoload.popularity_progress_bar = $UI/RestorantStats/ProgressBar
-	Autoload.popularity_progress_bar.value = 30
+	Autoload.popularity_progress_bar = $UI/ProgressBar
 	Autoload.order_zone = $OrderZone
 	Autoload.great_sound = $Great
 	Autoload.bad_sound = $Bad
+	Autoload.babyphone = $BabyPhone
 	$baby.navigation = $NavigationBaby
 	randomize()
 	spawn_new_customer()
@@ -143,15 +143,15 @@ func _on_OrderMenu_confirmed():
 		if table.is_free:
 			table.is_free = false
 			customer.table_for_eat = table
+			customer.start_dish_timer()
 			break
 
 	customer.path = $Navigation.get_simple_path(customer.global_transform.origin, customer.table_for_eat.translation)
 	$Customers.remove_child(customer)
 	$TableCustomers.add_child(customer)
-	
+
 
 func _on_DishesPopup_id_pressed(menu_id):
-	$BabyPhone.start_alert()
 	spawn_new_plate(menu_id)
 
 func spawn_new_plate(menu_id):
