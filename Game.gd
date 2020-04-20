@@ -17,6 +17,7 @@ func _ready():
 	Autoload.great_sound = $Great
 	Autoload.bad_sound = $Bad
 	Autoload.babyphone = $BabyPhone
+	Autoload.baby = $baby
 	$baby.navigation = $NavigationBaby
 	randomize()
 	spawn_new_customer()
@@ -31,6 +32,7 @@ func _physics_process(delta):
 	check_for_holding_plate()
 	check_for_serving_plate()
 	check_for_dishwasher()
+	check_for_takeing_baby()
 
 	if Input.is_action_pressed("quit"):
 		get_tree().quit()
@@ -118,6 +120,18 @@ func check_for_dishwasher():
 			$Player.remove_dirty_plate()
 			start_timer_for_cleaned()
 			$Blip.play()
+
+func check_for_takeing_baby():
+	if Input.is_action_just_released("action") and Autoload.baby.isEscaped and not Autoload.baby.dead:
+		if Autoload.baby.is_holded:
+			if $CradleArea.overlaps_body($Player):
+				print("in baby zone")
+				$Player.remove_child(Autoload.baby)
+				Autoload.baby.putInBed()
+				add_child(Autoload.baby)
+		elif Autoload.baby.get_node("TakeArea").overlaps_body($Player):
+			print("take baby")
+			$Player.take_baby()
 
 func start_timer_for_cleaned():
 	var timer = Timer.new()

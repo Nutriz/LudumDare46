@@ -63,3 +63,9 @@ func refresh_dirty_plates():
 func remove_plate():
 	remove_child(holding_plate)
 	holding_plate = null
+
+func take_baby():
+	Autoload.baby.get_parent().remove_child(Autoload.baby)
+	Autoload.baby.translation = $BabyPosition.translation
+	Autoload.baby.is_holded = true
+	add_child(Autoload.baby)

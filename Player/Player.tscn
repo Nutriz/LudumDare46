@@ -23,6 +23,9 @@ material/0 = null
 [node name="PlatePosition" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.21086, 0 )
 
+[node name="BabyPosition" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08018, -0.794546 )
+
 [node name="DirtyPlates" type="Spatial" parent="."]
 
 [node name="DirtyPlate1" type="MeshInstance" parent="DirtyPlates"]

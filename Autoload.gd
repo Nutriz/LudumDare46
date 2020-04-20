@@ -9,6 +9,7 @@ var order_zone
 var great_sound
 var bad_sound
 
+var baby
 var babyphone
 
 func _ready():
