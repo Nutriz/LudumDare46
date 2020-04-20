@@ -38,4 +38,14 @@ material/0 = null
 [node name="EatTimer" type="Timer" parent="."]
 wait_time = 10.0
 one_shot = true
+
+[node name="WaitingDishTimer" type="Timer" parent="."]
+wait_time = 40.0
+
+[node name="WaitingOrderTimer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+autostart = true
 [connection signal="timeout" from="EatTimer" to="." method="_on_EatTimer_timeout"]
+[connection signal="timeout" from="WaitingDishTimer" to="." method="_on_WaitingTimer_timeout"]
+[connection signal="timeout" from="WaitingOrderTimer" to="." method="_on_WaitingTimer_timeout"]
