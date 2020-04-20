@@ -32,21 +32,22 @@ func _physics_process(delta):
 		var space_state = get_world().direct_space_state
 		var look_at = translation
 		look_at.x += 2
-#		var result = space_state.intersect_ray(translation, look_at, [self, Autoload.player])
 #
 #		print(result.values())
 		vel.x = speed
 		move_and_slide(vel, Vector3.UP)
 	else:
 		if path_ind < path.size():
-			# TODO fix look_at
-#			var look_to = Vector3(path[path_ind])
-#			look_at(path[path_ind], Vector3.UP)
+			look_at(path[path_ind], Vector3.UP)
 			var move_vec = (path[path_ind] - global_transform.origin)
 			if move_vec.length() < 0.1:
 				path_ind += 1
 			else:
 				move_and_slide(move_vec.normalized() * speed, Vector3.UP)
+#		elif path_ind == path.size():
+#			print("at pos")
+#			path_ind += 1
+#			look_at(table_for_eat.get_node("PlatePosition").translation, Vector3.UP)
 
 func move_two_unit():
 	target_x = translation.x + 1.5

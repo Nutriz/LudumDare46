@@ -4,7 +4,7 @@
 [ext_resource path="res://Customer/customer_material.material" type="Material" id=2]
 
 [sub_resource type="CapsuleShape" id=1]
-radius = 0.0720265
+radius = 0.0619007
 height = 0.283261
 
 [sub_resource type="ArrayMesh" id=2]
@@ -23,15 +23,15 @@ surfaces/0 = {
 }
 
 [node name="Customer" type="KinematicBody"]
-transform = Transform( -8.14603e-07, 0, 5, 0, 5, 0, -5, 0, -8.14603e-07, 0, 0, 0 )
+transform = Transform( 1.25172e-06, 0, -5, 0, 5, 0, 5, 0, 1.25172e-06, 0, 0, 0 )
 script = ExtResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.00291421, 0.228584, -0.0288353 )
+transform = Transform( 1, 2.84217e-14, -1.01644e-20, 0, -4.37114e-08, -1, -2.84217e-14, 1, -4.37114e-08, -0.00108969, 0.228584, -0.00144554 )
 shape = SubResource( 1 )
 
 [node name="Mesh" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0746552, 0, -0.095223 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.073488, 0, 0.0489465 )
 mesh = SubResource( 2 )
 material/0 = null
 
