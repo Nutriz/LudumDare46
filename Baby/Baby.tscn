@@ -38,7 +38,7 @@ wait_time = 10.0
 autostart = true
 
 [node name="Timer_dead" type="Timer" parent="."]
-wait_time = 45.0
+wait_time = 40.0
 one_shot = true
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]

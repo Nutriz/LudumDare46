@@ -10,6 +10,7 @@ var next_menu
 var lock_order = false
 
 func _ready():
+	get_tree().paused = false
 	$World/Apartment/Mesh.mesh.surface_get_material(0).params_blend_mode = 1
 	$UI/WelcomeDialog.visible = true
 	for i in range(12):
@@ -41,6 +42,10 @@ func _physics_process(delta):
 
 	if Input.is_action_just_released("switch_camera"):
 		$Camera.current = !$Camera.current
+
+	if $UI/ProgressBar.value == 0 or Autoload.baby.dead:
+		$UI/GameOver.visible = true
+		get_tree().paused = true
 
 func check_for_orders():
 	if Input.is_action_just_released("action") and not $Customers.get_children().empty() and not lock_order:
@@ -245,3 +250,7 @@ func _on_TutoDialog3_confirmed():
 func _on_TutoDialog4_confirmed():
 	$UI/TutoDialog5.set_position(get_popup_position($PopupPos/Pos5.translation))
 	$UI/TutoDialog5.visible = true
+
+
+func _on_GameOver_confirmed():
+	get_tree().reload_current_scene()
