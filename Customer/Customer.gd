@@ -63,7 +63,6 @@ func start_dish_timer():
 	$WaitingDishTimer.start()
 
 func _on_EatTimer_timeout():
-	table_for_eat.is_free = true
 	queue_free()
 
 func _on_WaitingTimer_timeout():

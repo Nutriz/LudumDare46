@@ -7,6 +7,8 @@ onready var plate_clean_scn = load("res://Scenes/Plate.tscn")
 var move_to_apartment
 var next_menu
 
+var lock_order = false
+
 func _ready():
 	$World/Apartment/Mesh.mesh.surface_get_material(0).params_blend_mode = 1
 	$UI/WelcomeDialog.visible = true
@@ -41,12 +43,14 @@ func _physics_process(delta):
 		$Camera.current = !$Camera.current
 
 func check_for_orders():
-	if Input.is_action_just_released("action") and not $Customers.get_children().empty():
+	if Input.is_action_just_released("action") and not $Customers.get_children().empty() and not lock_order:
 		if $OrderZone.overlaps_body($Player):
-			for child in $Customers.get_children():
-				if $OrderZone.overlaps_body(child):
+			for customer in $Customers.get_children():
+				if $OrderZone.overlaps_body(customer):
 					display_order_popup()
 					$Blip.play()
+					lock_order = true
+					return
 
 
 func display_order_popup():
@@ -84,13 +88,14 @@ func check_for_holding_plate():
 func check_for_dirty_plate():
 	if Input.is_action_just_released("action"):
 		# on tables
-		for areas in $Tables.get_children():
+		for table in $Tables.get_children():
 			# TODO must refactor for all tables
-			if areas is Area:
-				var plate = areas.get_node("PlateStatic")
+			if table is Area:
+				var plate = table.get_node("PlateStatic")
 				if plate != null && plate.is_dirty() and $Player.holding_plate == null and plate.get_node("Area").overlaps_body($Player):
 					$Player.take_dirty_plate(plate)
 					$Blip.play()
+					table.is_free = true
 					return
 		# on ready bar
 		for plate in $ReadyPlates.get_children():
@@ -151,19 +156,18 @@ func add_clean_plate():
 	$CleanPlates.add_child(plate)
 
 func _on_OrderMenu_confirmed():
-	var customer = $Customers.get_child(0)
+	var customer = $Customers.get_children().pop_front()
 	customer.ordered_id_menu = next_menu
 	for table in $Tables.get_children():
 		if table.is_free:
 			table.is_free = false
 			customer.table_for_eat = table
 			customer.start_dish_timer()
-			break
-
-	customer.path = $Navigation.get_simple_path(customer.global_transform.origin, customer.table_for_eat.translation)
-	$Customers.remove_child(customer)
-	$TableCustomers.add_child(customer)
-
+			lock_order = false
+			customer.path = $Navigation.get_simple_path(customer.global_transform.origin, customer.table_for_eat.translation)
+			$Customers.remove_child(customer)
+			$TableCustomers.add_child(customer)
+			return
 
 func _on_DishesPopup_id_pressed(menu_id):
 	spawn_new_plate(menu_id)

@@ -73,5 +73,3 @@ func putInBed():
 	$Timer_escape.wait_time = randomNumberGen.randf_range(10, 60)
 	$Timer_escape.start();
 	$AudioStreamPlayer3D.stop();
-
-
