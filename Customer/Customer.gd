@@ -22,11 +22,9 @@ func _process(delta):
 func _physics_process(delta):
 	vel += gravity * delta
 	if path == null:
-		var current_ordering = false
 		for customer in Autoload.order_zone.get_overlapping_bodies():
-			if customer.get_name().begins_with("Customer"):
+			if customer.get_name().begins_with("Customer") or customer.get_name().begins_with("@Customer"):
 				return
-		var space_state = get_world().direct_space_state
 		var look_at = translation
 		look_at.x += 2
 #
@@ -58,6 +56,7 @@ func served(served_id_menu):
 		Autoload.popularity_progress_bar.value = Autoload.popularity_progress_bar.value - 1
 	else:
 		Autoload.great_sound.play()
+		Autoload.popularity_progress_bar.value = Autoload.popularity_progress_bar.value + 3
 
 func start_dish_timer():
 	$WaitingDishTimer.start()

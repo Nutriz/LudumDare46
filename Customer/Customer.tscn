@@ -5,7 +5,7 @@
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.0619007
-height = 0.283261
+height = 0.32282
 
 [sub_resource type="ArrayMesh" id=2]
 surfaces/0 = {

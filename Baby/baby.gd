@@ -1,75 +1,73 @@
 extends KinematicBody
 var navigation: Navigation
-var path = []
-var ray: RayCast
-var path_ind = 0
-var speed = 17
-var motion = Vector3()
-var randomNumberGen: RandomNumberGenerator;
+
+const SPEED = 0.6
+var vel = Vector3()
+
 var move_vec = Vector3()
-export var gravity = 10;
-var isEscaped = false
+var is_escaped = false
+var escape_path
+var path_index = 0
 var is_holded = false
 var dead
 
 func _ready():
-	ray = $RayCast;
-	translation = Vector3(14.516,0.436,-5.292)
-	randomNumberGen = RandomNumberGenerator.new();
+	start_next_escape_cycle()
 
 func _physics_process(delta):
-
-	if is_holded:
-		return
-
-	move_vec.y -= gravity
-	if isEscaped :
-		if ray.enabled:
-			print(ray.enabled);
-			if(ray.get_collision_point()):
-				var point = ray.get_collision_point();
-				path = navigation.get_simple_path(translation, point);
-				ray.enabled = false
-
-
-		if path_ind < path.size():
-			move_vec = (path[path_ind] - global_transform.origin)
+	if escape_path != null and not is_holded:
+		if path_index < escape_path.size():
+			move_vec = escape_path[path_index] - global_transform.origin
 			if move_vec.length() < 1:
-				path_ind += 1
+				path_index += 1
 			else:
-				move_vec.y = 0
-				move_and_slide(move_vec.normalized() * speed * delta, Vector3.UP)
+				$Mesh.look_at(escape_path[path_index], Vector3.UP)
+				move_and_slide(move_vec.normalized() * SPEED, Vector3.UP)
+		else:
+			set_random_pos_to_walk(escape_path[escape_path.size() - 1])
 
-
-func _on_Timer_timeout():
-	randomRotate();
-	$AudioStreamPlayer3D.play();
-	ray.enabled = true;
-
-func randomRotate():
-	move_vec = Vector3();
-	rotate_y(randomNumberGen.randf_range(-10, 10))
-	path = []
-	path_ind = 0
-
-
-func _on_Timer_escape_timeout():
-	translation = Vector3(13.496,0, -0.411)
-	isEscaped = true;
-	$AudioStreamPlayer3D.play();
-	Autoload.babyphone.start_alert()
-	$Timer_dead.start()
-
-func _on_Timer_dead_timeout():
-	dead = true
-	print('le bébé est mort!!')
-
-func putInBed():
-	isEscaped = false
+func put_in_bed(new_pos):
+	print("put in bed")
+	Autoload.popularity_progress_bar.value = Autoload.popularity_progress_bar.value + 1
 	is_holded = false
+	start_next_escape_cycle()
 	Autoload.babyphone.stop_alert()
-	translation = Vector3(14.516,0.436,-5.292)
-	$Timer_dead.stop()
-	$Timer_escape.wait_time = randomNumberGen.randf_range(10, 60)
-	$Timer_escape.start();
-	$AudioStreamPlayer3D.stop();
+	translation = new_pos
+	$DeadTimer.stop()
+
+func start_next_escape_cycle():
+	randomize()
+	$BabySound.stop()
+	$NextEscapeTimer.start(20 + randi() % 80);
+
+func _on_NextEscapeTimer_timeout():
+	print("baby escaped")
+	is_escaped = true
+	set_random_pos_to_walk(null)
+	$BabySound.play()
+	Autoload.babyphone.start_alert()
+	$DeadTimer.start()
+
+func set_random_pos_to_walk(from):
+	var positions = get_tree().get_nodes_in_group("BabyPos")
+	positions.shuffle()
+
+	var start_pos
+	if from != null:
+		start_pos = from
+	else:
+		start_pos = positions.pop_front().translation
+
+	translation = start_pos
+	var end_pos = positions.pop_front().translation
+	escape_path = get_parent().get_node("NavigationBaby").get_simple_path(start_pos, end_pos)
+
+	path_index = 0
+
+func _on_DeadTimer_timeout():
+	Autoload.popularity_progress_bar.value = Autoload.popularity_progress_bar.value - 1
+
+func holded(new_pos):
+	is_holded = true
+	escape_path = null
+	translation = new_pos

@@ -7,10 +7,16 @@ onready var plate_clean_scn = load("res://Scenes/Plate.tscn")
 var move_to_apartment
 var next_menu
 
+var baby
+
 var lock_order = false
 
 func _ready():
-	get_tree().paused = false
+
+	$Baby.translation = $BabyCraddlePosition.translation
+
+	get_tree().paused = true
+
 	$World/Apartment/Mesh.mesh.surface_get_material(0).params_blend_mode = 1
 	$UI/WelcomeDialog.visible = true
 	for i in range(12):
@@ -20,8 +26,9 @@ func _ready():
 	Autoload.great_sound = $Great
 	Autoload.bad_sound = $Bad
 	Autoload.babyphone = $BabyPhone
-	Autoload.baby = $baby
-	$baby.navigation = $NavigationBaby
+	Autoload.baby = $Baby
+	baby = Autoload.baby
+
 	randomize()
 	spawn_new_customer()
 
@@ -35,7 +42,7 @@ func _physics_process(delta):
 	check_for_holding_plate()
 	check_for_serving_plate()
 	check_for_dishwasher()
-	check_for_takeing_baby()
+	check_for_taking_baby()
 
 	if Input.is_action_pressed("quit"):
 		get_tree().quit()
@@ -43,7 +50,7 @@ func _physics_process(delta):
 	if Input.is_action_just_released("switch_camera"):
 		$Camera.current = !$Camera.current
 
-	if $UI/ProgressBar.value == 0 or Autoload.baby.dead:
+	if $UI/ProgressBar.value == 0 or baby.dead:
 		$UI/GameOver.visible = true
 		get_tree().paused = true
 
@@ -72,9 +79,6 @@ func check_for_dishes():
 			if $ReadyPlates.get_child_count() < 6:
 				display_dishes_popup()
 				$Blip.play()
-			else:
-				$Bad2.play()
-				print("full ready plates")
 
 func display_dishes_popup():
 	$UI/DishesPopup.set_position(get_popup_position($Player.translation))
@@ -117,6 +121,7 @@ func check_for_serving_plate():
 					print("customer overlap " + table_area.name + " " + str(table_area.overlaps_body(customers)))
 					if table_area.overlaps_body(customers):
 						var plate = $Player.holding_plate
+						plate.get_node("Area/CollisionShape").shape.extents.z = 4.2
 						$Player.remove_plate()
 						customers.served(plate.type)
 						plate.translation = table_area.get_node("PlatePosition").translation
@@ -132,17 +137,18 @@ func check_for_dishwasher():
 				start_timer_for_cleaned()
 				$Blip.play()
 
-func check_for_takeing_baby():
-	if Input.is_action_just_released("action") and Autoload.baby.isEscaped and not Autoload.baby.dead:
-		if Autoload.baby.is_holded:
+func check_for_taking_baby():
+	if Input.is_action_just_released("action") and baby.is_escaped:
+		if baby.is_holded:
 			if $CradleArea.overlaps_body($Player):
-				print("in baby zone")
-				$Player.remove_child(Autoload.baby)
-				Autoload.baby.putInBed()
-				add_child(Autoload.baby)
-		elif Autoload.baby.get_node("TakeArea").overlaps_body($Player):
+				$Player.remove_child(baby)
+				add_child(baby)
+				baby.put_in_bed($BabyCraddlePosition.translation)
+		elif baby.get_node("TakeArea").overlaps_body($Player):
 			print("take baby")
-			$Player.take_baby()
+			var baby = $Baby
+			remove_child(baby)
+			$Player.hold_baby(baby)
 
 func start_timer_for_cleaned():
 	var timer = Timer.new()
@@ -209,8 +215,13 @@ func get_random_menu():
 	elif next_menu == 2:
 		return "Blue"
 
-func _on_DoorZone_body_exited(body):
-	move_to_apartment = !move_to_apartment
+func _on_DoorZoneAppart_body_exited(body):
+	if not $DoorZone.overlaps_body($Player):
+		move_to_apartment = true
+
+func _on_DoorZoneRestaurant_body_exited(body):
+	if not $DoorZone.overlaps_body($Player):
+		move_to_apartment = false
 
 func move_camera():
 	if move_to_apartment:
@@ -227,30 +238,34 @@ func _on_CustomerSpawner_timeout():
 
 func spawn_new_customer():
 	var customer = customer_scn.instance()
-	customer.translation = $SpawnCustomerPosition.translation
+	customer.translation = $SpawnCustomerPosition.translation - Vector3(2 * $Customers.get_child_count(), 0, 0)
 	$Customers.add_child(customer)
 
+func _on_TutoDialog5_confirmed():
+	get_tree().paused = false
 
-func _on_WelcomeDialog_confirmed():
+func _on_WelcomeDialog_hide():
 	$UI/TutoDialog1.set_position(get_popup_position($PopupPos/Pos1.translation))
 	$UI/TutoDialog1.visible = true
 
-func _on_TutoDialog1_confirmed():
+func _on_TutoDialog1_hide():
 	$UI/TutoDialog2.set_position(get_popup_position($PopupPos/Pos2.translation))
 	$UI/TutoDialog2.visible = true
 
-func _on_TutoDialog2_confirmed():
+func _on_TutoDialog2_hide():
 	$UI/TutoDialog3.set_position(get_popup_position($PopupPos/Pos3.translation))
 	$UI/TutoDialog3.visible = true
 
-func _on_TutoDialog3_confirmed():
+func _on_TutoDialog3_hide():
 	$UI/TutoDialog4.set_position(get_popup_position($PopupPos/Pos4.translation))
 	$UI/TutoDialog4.visible = true
 
-func _on_TutoDialog4_confirmed():
+func _on_TutoDialog4_hide():
 	$UI/TutoDialog5.set_position(get_popup_position($PopupPos/Pos5.translation))
 	$UI/TutoDialog5.visible = true
 
+func _on_TutoDialog5_hide():
+	get_tree().paused = false
 
-func _on_GameOver_confirmed():
+func _on_GameOver_hide():
 	get_tree().reload_current_scene()

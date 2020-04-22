@@ -4,44 +4,32 @@
 [ext_resource path="res://Baby/baby.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Sounds/baby.ogg" type="AudioStream" id=3]
 
-[sub_resource type="BoxShape" id=1]
-extents = Vector3( 0.218022, 0.280746, 0.356626 )
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.21
+height = 0.5
 
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 0.35, 0.52, 0.6 )
 
-[node name="RigidBody" type="KinematicBody"]
+[node name="Baby" type="KinematicBody"]
 script = ExtResource( 2 )
 
-[node name="RayCast" type="RayCast" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.286456, 0.344821 )
-enabled = true
-cast_to = Vector3( 0, -0.6, 5 )
-
-[node name="Spatial" type="Spatial" parent="."]
-
-[node name="baby" type="MeshInstance" parent="Spatial"]
-transform = Transform( 0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0, 0, 0 )
+[node name="Mesh" type="MeshInstance" parent="."]
+transform = Transform( -0.03, 0, -9.77524e-09, 0, 0.03, 0, 9.77524e-09, 0, -0.03, 0, 0, 0 )
 mesh = ExtResource( 1 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.267527, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.197527, 0 )
 shape = SubResource( 1 )
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 10.0
-autostart = true
-
-[node name="Timer_escape" type="Timer" parent="."]
-wait_time = 10.0
-autostart = true
-
-[node name="Timer_dead" type="Timer" parent="."]
-wait_time = 40.0
+[node name="NextEscapeTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+[node name="DeadTimer" type="Timer" parent="."]
+wait_time = 8.0
+
+[node name="BabySound" type="AudioStreamPlayer3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.664263, 0 )
 stream = ExtResource( 3 )
 unit_db = 12.522
@@ -51,6 +39,5 @@ unit_db = 12.522
 [node name="CollisionShape" type="CollisionShape" parent="TakeArea"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.77, 0 )
 shape = SubResource( 2 )
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
-[connection signal="timeout" from="Timer_escape" to="." method="_on_Timer_escape_timeout"]
-[connection signal="timeout" from="Timer_dead" to="." method="_on_Timer_dead_timeout"]
+[connection signal="timeout" from="NextEscapeTimer" to="." method="_on_NextEscapeTimer_timeout"]
+[connection signal="timeout" from="DeadTimer" to="." method="_on_DeadTimer_timeout"]

@@ -23,10 +23,6 @@ config/icon="res://icon.png"
 
 Autoload="*res://Autoload.gd"
 
-[display]
-
-window/size/fullscreen=true
-
 [editor_plugins]
 
 enabled=PoolStringArray( "MagicaVoxelImporter" )

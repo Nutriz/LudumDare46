@@ -3,8 +3,8 @@ extends KinematicBody
 var gravity = Vector3.DOWN * 10
 var vel = Vector3()
 export var speed = 4
-export var rotate_speed = 0.06
-export var MAX_SPEED = 5
+export var rotate_speed = 0.05
+export var MAX_SPEED = 4
 
 var holding_plate
 var dirty_plate_count = 0
@@ -64,8 +64,6 @@ func remove_plate():
 	remove_child(holding_plate)
 	holding_plate = null
 
-func take_baby():
-	Autoload.baby.get_parent().remove_child(Autoload.baby)
-	Autoload.baby.translation = $BabyPosition.translation
-	Autoload.baby.is_holded = true
-	add_child(Autoload.baby)
+func hold_baby(baby):
+	baby.holded($BabyPosition.translation)
+	add_child(baby)
