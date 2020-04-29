@@ -265,7 +265,12 @@ func _on_TutoDialog4_hide():
 	$UI/TutoDialog5.visible = true
 
 func _on_TutoDialog5_hide():
-	get_tree().paused = false
+	$UI/TutoDialog6.set_position(get_popup_position($PopupPos/Pos6.translation))
+	$UI/TutoDialog6.visible = true
 
 func _on_GameOver_hide():
 	get_tree().reload_current_scene()
+
+
+func _on_TutoDialog6_hide():
+	get_tree().paused = false
